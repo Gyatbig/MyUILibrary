@@ -95,7 +95,7 @@ EXTRAFUNTABS:button({
     Name = "SUS",
     Description = "fun tool to use",
     Callback = function()
-        loadstring(game:HttpGet("https://pastebin.com/raw/Pv0rqM2h"))()    
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/blackheartedcurse/punkz-Scripts/main/SolaraVersionRagdoll.lua"))()    
     end,
 })
 
