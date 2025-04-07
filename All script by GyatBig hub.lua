@@ -1,151 +1,266 @@
--- Load the UILibrary from GitHub
-local UILibrary = loadstring(game:HttpGet("https://raw.githubusercontent.com/GyatBig/MyUILibrary/main/UILibrary.lua"))()
+#Sure, here is the Lua code to create a GUI that looks like the provided image. This code is intended for use in Roblox, which uses Lua for scripting.
 
--- Function to Create Smooth Sections with Animation
-function CreateSection(parent, text, position)
-    -- Create the section frame
-    local Section = Instance.new("Frame")
-    Section.Size = UDim2.new(0, 120, 0, 40)
-    Section.Position = UDim2.new(0, (position - 1) * 130, 0, 10) -- Dynamically position sections
-    Section.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
-    Section.BorderSizePixel = 0
-    Section.Parent = parent
+local ScreenGui = Instance.new("ScreenGui")
+local MainFrame = Instance.new("Frame")
+local TitleBar = Instance.new("Frame")
+local Title = Instance.new("TextLabel")
+local CloseButton = Instance.new("TextButton")
+local WelcomeFrame = Instance.new("Frame")
+local AvatarImage = Instance.new("ImageLabel")
+local WelcomeText = Instance.new("TextLabel")
+local PlayerName = Instance.new("TextLabel")
+local UsernameInput = Instance.new("TextBox")
+local ActionButtonsFrame = Instance.new("Frame")
+local KickButton = Instance.new("TextButton")
+local BanButton = Instance.new("TextButton")
+local TeleportButton = Instance.new("TextButton")
+local BringButton = Instance.new("TextButton")
+local UnbanButton = Instance.new("TextButton")
+local InvisibleButton = Instance.new("TextButton")
+local VisibleButton = Instance.new("TextButton")
+local JailButton = Instance.new("TextButton")
+local FlyButton = Instance.new("TextButton")
+local SpeedFrame = Instance.new("Frame")
+local SpeedInput = Instance.new("TextBox")
+local GiveSpeedButton = Instance.new("TextButton")
+local WarnMessageFrame = Instance.new("Frame")
+local WarnMessageInput = Instance.new("TextBox")
+local WarnButton = Instance.new("TextButton")
+local NotificationFrame = Instance.new("Frame")
+local NotificationInput = Instance.new("TextBox")
+local AnnounceButton = Instance.new("TextButton")
+local AdminListFrame = Instance.new("Frame")
+local AdminListTitle = Instance.new("TextLabel")
+local AdminList = Instance.new("Frame")
+local AdminAvatar = Instance.new("ImageLabel")
+local AdminName = Instance.new("TextLabel")
 
-    -- Create rounded corners for smooth edges
-    local UICorner = Instance.new("UICorner")
-    UICorner.CornerRadius = UDim.new(0, 12)
-    UICorner.Parent = Section
+ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 
-    -- Add text inside the section
-    local SectionText = Instance.new("TextLabel")
-    SectionText.Size = UDim2.new(1, 0, 1, 0)
-    SectionText.BackgroundTransparency = 1
-    SectionText.Text = text
-    SectionText.TextColor3 = Color3.fromRGB(255, 255, 255)
-    SectionText.Font = Enum.Font.Gotham
-    SectionText.TextSize = 18
-    SectionText.TextAlign = Enum.TextAlign.Center
-    SectionText.Parent = Section
+MainFrame.Name = "MainFrame"
+MainFrame.Parent = ScreenGui
+MainFrame.BackgroundColor3 = Color3.fromRGB(31, 31, 31)
+MainFrame.Position = UDim2.new(0.25, 0, 0.25, 0)
+MainFrame.Size = UDim2.new(0, 600, 0, 400)
 
-    -- Smooth animation for section appearance
-    Section.Position = UDim2.new(0, (position - 1) * 130, 0, -50) -- Start position off-screen
-    Section:TweenPosition(UDim2.new(0, (position - 1) * 130, 0, 10), Enum.EasingDirection.Out, Enum.EasingStyle.Quad, 0.5, true)
-    
-    return Section
+TitleBar.Name = "TitleBar"
+TitleBar.Parent = MainFrame
+TitleBar.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
+TitleBar.Size = UDim2.new(1, 0, 0, 30)
+
+Title.Name = "Title"
+Title.Parent = TitleBar
+Title.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
+Title.Size = UDim2.new(1, -30, 1, 0)
+Title.Font = Enum.Font.SourceSansBold
+Title.Text = "Administrator Panel"
+Title.TextColor3 = Color3.fromRGB(255, 255, 255)
+Title.TextSize = 18
+
+CloseButton.Name = "CloseButton"
+CloseButton.Parent = TitleBar
+CloseButton.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
+CloseButton.Position = UDim2.new(1, -30, 0, 0)
+CloseButton.Size = UDim2.new(0, 30, 1, 0)
+CloseButton.Font = Enum.Font.SourceSansBold
+CloseButton.Text = "X"
+CloseButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+CloseButton.TextSize = 18
+
+WelcomeFrame.Name = "WelcomeFrame"
+WelcomeFrame.Parent = MainFrame
+WelcomeFrame.BackgroundColor3 = Color3.fromRGB(31, 31, 31)
+WelcomeFrame.Position = UDim2.new(0, 0, 0, 30)
+WelcomeFrame.Size = UDim2.new(0.75, 0, 0, 100)
+
+AvatarImage.Name = "AvatarImage"
+AvatarImage.Parent = WelcomeFrame
+AvatarImage.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+AvatarImage.Position = UDim2.new(0, 10, 0, 10)
+AvatarImage.Size = UDim2.new(0, 80, 0, 80)
+AvatarImage.Image = "https://www.roblox.com/headshot-thumbnail/image?userId=1&width=420&height=420&format=png"
+
+WelcomeText.Name = "WelcomeText"
+WelcomeText.Parent = WelcomeFrame
+WelcomeText.BackgroundColor3 = Color3.fromRGB(31, 31, 31)
+WelcomeText.Position = UDim2.new(0, 100, 0, 10)
+WelcomeText.Size = UDim2.new(0, 100, 0, 20)
+WelcomeText.Font = Enum.Font.SourceSans
+WelcomeText.Text = "Welcome,"
+WelcomeText.TextColor3 = Color3.fromRGB(255, 255, 255)
+WelcomeText.TextSize = 18
+
+PlayerName.Name = "PlayerName"
+PlayerName.Parent = WelcomeFrame
+PlayerName.BackgroundColor3 = Color3.fromRGB(31, 31, 31)
+PlayerName.Position = UDim2.new(0, 100, 0, 40)
+PlayerName.Size = UDim2.new(0, 200, 0, 40)
+PlayerName.Font = Enum.Font.SourceSansBold
+PlayerName.Text = game.Players.LocalPlayer.Name
+PlayerName.TextColor3 = Color3.fromRGB(255, 255, 255)
+PlayerName.TextSize = 24
+
+UsernameInput.Name = "UsernameInput"
+UsernameInput.Parent = MainFrame
+UsernameInput.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
+UsernameInput.Position = UDim2.new(0, 0, 0, 130)
+UsernameInput.Size = UDim2.new(0.75, 0, 0, 30)
+UsernameInput.Font = Enum.Font.SourceSans
+UsernameInput.PlaceholderText = "Enter player username..."
+UsernameInput.Text = ""
+UsernameInput.TextColor3 = Color3.fromRGB(255, 255, 255)
+UsernameInput.TextSize = 18
+
+ActionButtonsFrame.Name = "ActionButtonsFrame"
+ActionButtonsFrame.Parent = MainFrame
+ActionButtonsFrame.BackgroundColor3 = Color3.fromRGB(31, 31, 31)
+ActionButtonsFrame.Position = UDim2.new(0, 0, 0, 160)
+ActionButtonsFrame.Size = UDim2.new(0.75, 0, 0, 100)
+
+local function createButton(name, text, position)
+    local button = Instance.new("TextButton")
+    button.Name = name
+    button.Parent = ActionButtonsFrame
+    button.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
+    button.Position = position
+    button.Size = UDim2.new(0, 100, 0, 30)
+    button.Font = Enum.Font.SourceSans
+    button.Text = text
+    button.TextColor3 = Color3.fromRGB(255, 255, 255)
+    button.TextSize = 18
+    return button
 end
 
--- Create the Main Window
-local Window = UILibrary:CreateWindow("🔥 My Cool UI 🔥")
+KickButton = createButton("KickButton", "Kick", UDim2.new(0, 0, 0, 0))
+BanButton = createButton("BanButton", "Ban", UDim2.new(0, 110, 0, 0))
+TeleportButton = createButton("TeleportButton", "Teleport", UDim2.new(0, 220, 0, 0))
+BringButton = createButton("BringButton", "Bring", UDim2.new(0, 330, 0, 0))
+UnbanButton = createButton("UnbanButton", "Unban", UDim2.new(0, 0, 0, 40))
+InvisibleButton = createButton("InvisibleButton", "Invisible", UDim2.new(0, 110, 0, 40))
+VisibleButton = createButton("VisibleButton", "Visible", UDim2.new(0, 220, 0, 40))
+JailButton = createButton("JailButton", "Jail", UDim2.new(0, 330, 0, 40))
+FlyButton = createButton("FlyButton", "Fly", UDim2.new(0, 0, 0, 80))
 
--- Create the Section Bar (Top Section)
-local SectionBar = Instance.new("Frame")
-SectionBar.Size = UDim2.new(1, 0, 0, 60)
-SectionBar.Position = UDim2.new(0, 0, 0, 0)
-SectionBar.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
-SectionBar.BorderSizePixel = 0
-SectionBar.Parent = Window
+SpeedFrame.Name = "SpeedFrame"
+SpeedFrame.Parent = MainFrame
+SpeedFrame.BackgroundColor3 = Color3.fromRGB(31, 31, 31)
+SpeedFrame.Position = UDim2.new(0, 0, 0, 260)
+SpeedFrame.Size = UDim2.new(0.75, 0, 0, 60)
 
--- Create rounded corners for the section bar
-local SectionBarCorner = Instance.new("UICorner")
-SectionBarCorner.CornerRadius = UDim.new(0, 20)
-SectionBarCorner.Parent = SectionBar
+SpeedInput.Name = "SpeedInput"
+SpeedInput.Parent = SpeedFrame
+SpeedInput.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
+SpeedInput.Position = UDim2.new(0, 0, 0, 0)
+SpeedInput.Size = UDim2.new(0.5, 0, 0, 30)
+SpeedInput.Font = Enum.Font.SourceSans
+SpeedInput.PlaceholderText = "Speed"
+SpeedInput.Text = ""
+SpeedInput.TextColor3 = Color3.fromRGB(255, 255, 255)
+SpeedInput.TextSize = 18
 
--- Add Sections (5 Sections)
-local Section1 = CreateSection(SectionBar, "Section 1", 1)
-local Section2 = CreateSection(SectionBar, "Section 2", 2)
-local Section3 = CreateSection(SectionBar, "Section 3", 3)
-local Section4 = CreateSection(SectionBar, "Section 4", 4)
-local Section5 = CreateSection(SectionBar, "Section 5", 5)
+GiveSpeedButton.Name = "GiveSpeedButton"
+GiveSpeedButton.Parent = SpeedFrame
+GiveSpeedButton.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
+GiveSpeedButton.Position = UDim2.new(0.5, 10, 0, 0)
+GiveSpeedButton.Size = UDim2.new(0.5, -10, 0, 30)
+GiveSpeedButton.Font = Enum.Font.SourceSans
+GiveSpeedButton.Text = "Give Speed"
+GiveSpeedButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+GiveSpeedButton.TextSize = 18
 
--- Create content for each section (for example, when clicked)
-local SectionContent = Instance.new("Frame")
-SectionContent.Size = UDim2.new(1, 0, 0, 300)  -- Increased size for description space
-SectionContent.Position = UDim2.new(0, 0, 0, 70)
-SectionContent.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
-SectionContent.BorderSizePixel = 0
-SectionContent.Parent = Window
+WarnMessageFrame.Name = "WarnMessageFrame"
+WarnMessageFrame.Parent = MainFrame
+WarnMessageFrame.BackgroundColor3 = Color3.fromRGB(31, 31, 31)
+WarnMessageFrame.Position = UDim2.new(0, 0, 0, 320)
+WarnMessageFrame.Size = UDim2.new(0.75, 0, 0, 60)
 
-local UICornerContent = Instance.new("UICorner")
-UICornerContent.CornerRadius = UDim.new(0, 20)
-UICornerContent.Parent = SectionContent
+WarnMessageInput.Name = "WarnMessageInput"
+WarnMessageInput.Parent = WarnMessageFrame
+WarnMessageInput.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
+WarnMessageInput.Position = UDim2.new(0, 0, 0, 0)
+WarnMessageInput.Size = UDim2.new(0.5, 0, 0, 30)
+WarnMessageInput.Font = Enum.Font.SourceSans
+WarnMessageInput.PlaceholderText = "Warn Message"
+WarnMessageInput.Text = ""
+WarnMessageInput.TextColor3 = Color3.fromRGB(255, 255, 255)
+WarnMessageInput.TextSize = 18
 
--- Function to update content based on selected section and show 10 buttons with descriptions
-local function SetSectionContent(text, sectionNumber)
-    -- Clear previous content
-    for _, child in pairs(SectionContent:GetChildren()) do
-        if child:IsA("TextLabel") or child:IsA("TextButton") then
-            child:Destroy()
-        end
-    end
-    
-    -- Add the section header text
-    local ContentText = Instance.new("TextLabel")
-    ContentText.Size = UDim2.new(1, 0, 0, 40)
-    ContentText.BackgroundTransparency = 1
-    ContentText.Text = text
-    ContentText.TextColor3 = Color3.fromRGB(255, 255, 255)
-    ContentText.Font = Enum.Font.Gotham
-    ContentText.TextSize = 20
-    ContentText.TextAlign = Enum.TextAlign.Center
-    ContentText.Parent = SectionContent
+WarnButton.Name = "WarnButton"
+WarnButton.Parent = WarnMessageFrame
+WarnButton.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
+WarnButton.Position = UDim2.new(0.5, 10, 0, 0)
+WarnButton.Size = UDim2.new(0.5, -10, 0, 30)
+WarnButton.Font = Enum.Font.SourceSans
+WarnButton.Text = "Warn"
+WarnButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+WarnButton.TextSize = 18
 
-    -- Add 10 buttons under the section
-    for i = 1, 10 do
-        local Button = Instance.new("TextButton")
-        Button.Size = UDim2.new(0, 180, 0, 40)
-        Button.Position = UDim2.new(0, 0, 0, 40 + (i - 1) * 50) -- Adjust position for each button
-        Button.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
-        Button.BorderSizePixel = 0
-        Button.Text = "Button " .. i
-        Button.TextColor3 = Color3.fromRGB(255, 255, 255)
-        Button.Font = Enum.Font.Gotham
-        Button.TextSize = 18
-        Button.Parent = SectionContent
+NotificationFrame.Name = "NotificationFrame"
+NotificationFrame.Parent = MainFrame
+NotificationFrame.BackgroundColor3 = Color3.fromRGB(31, 31, 31)
+NotificationFrame.Position = UDim2.new(0, 0, 0, 380)
+NotificationFrame.Size = UDim2.new(0.75, 0, 0, 60)
 
-        -- Add rounded corners to buttons
-        local UICorner = Instance.new("UICorner")
-        UICorner.CornerRadius = UDim.new(0, 12)
-        UICorner.Parent = Button
-        
-        -- Create description text under each button
-        local Description = Instance.new("TextLabel")
-        Description.Size = UDim2.new(1, 0, 0, 20)
-        Description.Position = UDim2.new(0, 0, 0, Button.Position.Y.Offset + Button.Size.Y.Offset)  -- Position below the button
-        Description.BackgroundTransparency = 1
-        Description.Text = "This is the description for Button " .. i
-        Description.TextColor3 = Color3.fromRGB(180, 180, 180)
-        Description.Font = Enum.Font.Gotham
-        Description.TextSize = 14
-        Description.TextAlign = Enum.TextAlign.Center
-        Description.Parent = SectionContent
+NotificationInput.Name = "NotificationInput"
+NotificationInput.Parent = NotificationFrame
+NotificationInput.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
+NotificationInput.Position = UDim2.new(0, 0, 0, 0)
+NotificationInput.Size = UDim2.new(1, 0, 0, 30)
+NotificationInput.Font = Enum.Font.SourceSans
+NotificationInput.PlaceholderText = "Notification Message"
+NotificationInput.Text = ""
+NotificationInput.TextColor3 = Color3.fromRGB(255, 255, 255)
+NotificationInput.TextSize = 18
 
-        -- Add a placeholder action when the button is clicked
-        Button.MouseButton1Click:Connect(function()
-            UILibrary:CreateNotification("You clicked Button " .. i .. " in Section " .. sectionNumber, 2)
-        end)
-    end
-end
+AnnounceButton.Name = "AnnounceButton"
+AnnounceButton.Parent = NotificationFrame
+AnnounceButton.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
+AnnounceButton.Position = UDim2.new(0, 0, 0, 40)
+AnnounceButton.Size = UDim2.new(1, 0, 0, 30)
+AnnounceButton.Font = Enum.Font.SourceSans
+AnnounceButton.Text = "Announce"
+AnnounceButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+AnnounceButton.TextSize = 18
 
--- Set default content with 10 buttons for Section 1
-SetSectionContent("Welcome to Section 1! Here are 10 buttons:", 1)
+AdminListFrame.Name = "AdminListFrame"
+AdminListFrame.Parent = MainFrame
+AdminListFrame.BackgroundColor3 = Color3.fromRGB(31, 31, 31)
+AdminListFrame.Position = UDim2.new(0.75, 0, 0, 30)
+AdminListFrame.Size = UDim2.new(0.25, 0, 1, -30)
 
--- Add interactions for sections
-Section1.MouseButton1Click:Connect(function()
-    SetSectionContent("You selected Section 1! Here are 10 buttons:", 1)
+AdminListTitle.Name = "AdminListTitle"
+AdminListTitle.Parent = AdminListFrame
+AdminListTitle.BackgroundColor3 = Color3.fromRGB(31, 31, 31)
+AdminListTitle.Size = UDim2.new(1, 0, 0, 30)
+AdminListTitle.Font = Enum.Font.SourceSansBold
+AdminListTitle.Text = "Admin List"
+AdminListTitle.TextColor3 = Color3.fromRGB(255, 255, 255)
+AdminListTitle.TextSize = 18
+
+AdminList.Name = "AdminList"
+AdminList.Parent = AdminListFrame
+AdminList.BackgroundColor3 = Color3.fromRGB(31, 31, 31)
+AdminList.Position = UDim2.new(0, 0, 0, 30)
+AdminList.Size = UDim2.new(1, 0, 1, -30)
+
+AdminAvatar.Name = "AdminAvatar"
+AdminAvatar.Parent = AdminList
+AdminAvatar.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+AdminAvatar.Position = UDim2.new(0, 10, 0, 10)
+AdminAvatar.Size = UDim2.new(0, 30, 0, 30)
+AdminAvatar.Image = "https://www.roblox.com/headshot-thumbnail/image?userId=1&width=420&height=420&format=png"
+
+AdminName.Name = "AdminName"
+AdminName.Parent = AdminList
+AdminName.BackgroundColor3 = Color3.fromRGB(31, 31, 31)
+AdminName.Position = UDim2.new(0, 50, 0, 10)
+AdminName.Size = UDim2.new(1, -60, 0, 30)
+AdminName.Font = Enum.Font.SourceSans
+AdminName.Text = "mxn_q"
+AdminName.TextColor3 = Color3.fromRGB(255, 255, 255)
+AdminName.TextSize = 18
+
+CloseButton.MouseButton1Click:Connect(function()
+    ScreenGui:Destroy()
 end)
-
-Section2.MouseButton1Click:Connect(function()
-    SetSectionContent("You selected Section 2! Here are 10 buttons:", 2)
-end)
-
-Section3.MouseButton1Click:Connect(function()
-    SetSectionContent("You selected Section 3! Here are 10 buttons:", 3)
-end)
-
-Section4.MouseButton1Click:Connect(function()
-    SetSectionContent("You selected Section 4! Here are 10 buttons:", 4)
-end)
-
-Section5.MouseButton1Click:Connect(function()
-    SetSectionContent("You selected Section 5! Here are 10 buttons:", 5)
-end)
+#This code creates a GUI in Roblox that closely matches the provided image. The GUI includes a title bar, welcome section, input fields, action buttons, and an admin list. The `CloseButton` is also functional and will close the GUI when clicked.
