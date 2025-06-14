@@ -10,6 +10,18 @@
 -- Instances: 186 | Scripts: 12 | Modules: 0 | Tags: 0
 local G2L = {};
 
+-- Create a loading blur (disabled by default)
+local Lighting = game:GetService("Lighting")
+local blur = Lighting:FindFirstChild("LoadingBlur")
+if not blur then
+    blur = Instance.new("BlurEffect")
+    blur.Name = "LoadingBlur"
+    blur.Size = 55
+    blur.Enabled = false
+    blur.Parent = Lighting
+end
+
+
 -- StarterGui.ScreenGui
 G2L["1"] = Instance.new("ScreenGui", game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui"));
 G2L["1"]["ZIndexBehavior"] = Enum.ZIndexBehavior.Sibling;
