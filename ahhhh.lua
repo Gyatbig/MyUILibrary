@@ -1735,11 +1735,11 @@ local script = G2L["4a"];
                                 
                                 seedShopGui.Enabled = true
 				-- Toggle OFF
-				isBoosted = false
-				humanoid.WalkSpeed = defaultSpeed
-				stopFlying()
-				CircleFrame:TweenPosition(UDim2.new(0,0,0,0), TweenDirection, TweenStyle, TweenSpeed, false)
-			end
+				local player = game.Players.LocalPlayer
+                                local playerGui = player:WaitForChild("PlayerGui")
+                                local seedShopGui = playerGui:WaitForChild("Seed_Shop")
+                                
+                                seedShopGui.Enabled = true
 		end
 	end)
 	
