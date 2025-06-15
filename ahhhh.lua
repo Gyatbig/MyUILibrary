@@ -21,7 +21,6 @@ if not blur then
     blur.Parent = Lighting
 end
 
-
 -- StarterGui.ScreenGui
 G2L["1"] = Instance.new("ScreenGui", game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui"));
 G2L["1"]["ZIndexBehavior"] = Enum.ZIndexBehavior.Sibling;
@@ -1729,11 +1728,12 @@ local script = G2L["4a"];
 	
 			if Button.Parent.Position.X.Scale == 0 then
 				-- Toggle ON
-				isBoosted = true
-				humanoid.WalkSpeed = defaultSpeed + speedBoost
-				startFlying(character)
-				CircleFrame:TweenPosition(UDim2.new(0.5,0,0,0), TweenDirection, TweenStyle, TweenSpeed, false)
-			elseif Button.Parent.Position.X.Scale == 0.5 then
+			local player = game.Players.LocalPlayer
+                        local playerGui = player:WaitForChild("PlayerGui")
+                        local seedShopGui = playerGui:WaitForChild("Seed_Shop")
+
+                                
+                                seedShopGui.Enabled = true
 				-- Toggle OFF
 				isBoosted = false
 				humanoid.WalkSpeed = defaultSpeed
