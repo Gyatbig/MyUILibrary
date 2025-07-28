@@ -77,7 +77,7 @@ function HatanRizz:CreateMainWindow(title)
     local mainFrame = Create("Frame", {
         Name = "MainFrame",
         Size = UDim2.new(0, 500, 0, 600),
-        Position = UDim2.new(0.5, -250, 0.5, -300),
+        Position = UDim2.new(0.5, 0, 0.5, 0),
         BackgroundColor3 = PRIMARY_COLOR,
         BackgroundTransparency = TRANSPARENCY,
         AnchorPoint = Vector2.new(0.5, 0.5),
