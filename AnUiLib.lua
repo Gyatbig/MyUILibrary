@@ -66,7 +66,7 @@ local function Round(num, decimalPlaces)
 end
 
 -- Main UI Container
-function HatanRizz:CreateMainWindow(title)
+function HatanRizz:CreateMainWindow(title, config)
     local screenGui = Create("ScreenGui", {
         Name = "HatanRizzHub",
         ResetOnSpawn = false,
@@ -76,13 +76,17 @@ function HatanRizz:CreateMainWindow(title)
 
     local mainFrame = Create("Frame", {
         Name = "MainFrame",
-        Size = UDim2.new(0, 500, 0, 600),
+        Size = UDim2.new(0, 400, 0, 350)  -- Typical UI Lib Size,
         Position = UDim2.new(0.5, 0, 0.5, 0),
         BackgroundColor3 = PRIMARY_COLOR,
         BackgroundTransparency = TRANSPARENCY,
         AnchorPoint = Vector2.new(0.5, 0.5),
         Parent = screenGui
     })
+
+    config = config or {}
+    local isDraggable = config.Draggable ~= false
+
 
     Create("UICorner", {
         CornerRadius = CORNER_RADIUS,
@@ -168,6 +172,7 @@ function HatanRizz:CreateMainWindow(title)
     })
 
     -- Make window draggable
+    if isDraggable then
     local dragging
     local dragInput
     local dragStart
@@ -208,6 +213,8 @@ function HatanRizz:CreateMainWindow(title)
             Update(input)
         end
     end)
+
+        end
 
     -- Add glow effect
     local glow = Create("ImageLabel", {
@@ -1053,5 +1060,68 @@ function HatanRizz:CreateKeybind(parent, text, default, callback)
         end
     }
 end
+
+
+function HatanRizz:Notify(title, text, duration)
+    duration = duration or 3
+    local screenGui = game.Players.LocalPlayer:WaitForChild("PlayerGui"):FindFirstChild("HatanRizzHub")
+    if not screenGui then return end
+
+    local notif = Instance.new("Frame")
+    notif.Size = UDim2.new(0, 300, 0, 80)
+    notif.Position = UDim2.new(1, -320, 1, -100)
+    notif.AnchorPoint = Vector2.new(0, 1)
+    notif.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+    notif.BackgroundTransparency = 0.3
+    notif.Parent = screenGui
+    notif.ZIndex = 10
+
+    local corner = Instance.new("UICorner", notif)
+    corner.CornerRadius = UDim.new(0, 8)
+
+    local stroke = Instance.new("UIStroke", notif)
+    stroke.Color = Color3.fromRGB(0, 170, 255)
+    stroke.Thickness = 1
+    stroke.Transparency = 0.3
+
+    local titleLabel = Instance.new("TextLabel")
+    titleLabel.Text = title
+    titleLabel.Font = Enum.Font.GothamBold
+    titleLabel.TextSize = 16
+    titleLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+    titleLabel.BackgroundTransparency = 1
+    titleLabel.Size = UDim2.new(1, -20, 0, 25)
+    titleLabel.Position = UDim2.new(0, 10, 0, 5)
+    titleLabel.TextXAlignment = Enum.TextXAlignment.Left
+    titleLabel.Parent = notif
+
+    local bodyLabel = Instance.new("TextLabel")
+    bodyLabel.Text = text
+    bodyLabel.Font = Enum.Font.Gotham
+    bodyLabel.TextSize = 14
+    bodyLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+    bodyLabel.BackgroundTransparency = 1
+    bodyLabel.Size = UDim2.new(1, -20, 0, 40)
+    bodyLabel.Position = UDim2.new(0, 10, 0, 30)
+    bodyLabel.TextWrapped = true
+    bodyLabel.TextXAlignment = Enum.TextXAlignment.Left
+    bodyLabel.TextYAlignment = Enum.TextYAlignment.Top
+    bodyLabel.Parent = notif
+
+    game:GetService("TweenService"):Create(notif, TweenInfo.new(0.3), {
+        Position = UDim2.new(1, -320, 1, -120)
+    }):Play()
+
+    task.delay(duration, function()
+        if notif then
+            game:GetService("TweenService"):Create(notif, TweenInfo.new(0.3), {
+                Position = UDim2.new(1, -320, 1, 0)
+            }):Play()
+            task.wait(0.3)
+            notif:Destroy()
+        end
+    end)
+end
+
 
 return HatanRizz
