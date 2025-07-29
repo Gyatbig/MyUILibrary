@@ -1,5 +1,5 @@
 {
-  "title": "⚠️ Server Restart",
-  "text": "Expect brief downtime at 5PM UTC.",
+  "title": "Announcement",
+  "text": "HiiiIIiI.",
   "color": "Red"
 }
