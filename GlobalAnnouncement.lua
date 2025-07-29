@@ -1,5 +1,5 @@
 {
   "title": "Announcement",
-  "text": "HiiiIIiI.",
+  "text": "ItsMEeeeXyzNOTHINNn.",
   "color": "Red"
 }
